@@ -1,19 +1,24 @@
-// src/app/app.module.ts
-
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SeriesListComponent } from './series-list.component';
+import { SerieModule } from './serie/serie.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    SeriesListComponent
+    AppComponent
   ],
   imports: [
-    AppComponent,
     BrowserModule,
-    HttpClientModule 
-  ]
+    AppRoutingModule,
+    SerieModule,
+    HttpClientModule
+  ],
+  providers: [
+    provideClientHydration()
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
